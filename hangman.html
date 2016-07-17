@@ -37,6 +37,8 @@
 		}
 			// *** function that 
 		function secrWord(){
+			document.getElementById("img1").style.display = "none";
+			document.getElementById("img2").style.display = "none";
 			var words = ["soccer", "basketball", "tennis", "golf", "football"];
 			var randomNumber = Math.floor(Math.random() * words.length);
 			randomWord = (words[randomNumber]);
@@ -81,6 +83,7 @@
 				document.getElementById("live").innerHTML = "YOU HAVE " + lives + " LIVES";
 				if (lives < 1) {
 					alert("CONGRATULATIONS, YOU JUST PLAYED YOURSELF!");
+					document.getElementById("img2").style.display = "block";
 					var newGame = confirm("ANOTHA ONE");
 					if(newGame == true){
 						secrWord();
