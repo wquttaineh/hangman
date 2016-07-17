@@ -10,14 +10,27 @@
 
 	</div>
 
-	<script>
+	<div >
+	<img id= "img1" src="assets/images/img1.jpg">
+		
+	</div>
 
+	<div>
+	<img id="img2" src="assets/images/img2.jpg">
+
+	</div>
+
+	<script>
+		document.getElementById("img1").style.display = "none";
+		document.getElementById("img2").style.display = "none";
 		var startGame = prompt("Are you ready to play Hangman? ");
 		if(startGame === "yes"){
 			alert("GET READY GAME IS ABOUT TO START");
 			secrWord();
 		}else if(startGame === "no"){
-			alert("CONGRATULATIONS!! YOU JUST PLAYED YOURSELF!!");
+			
+			document.getElementById("img2").style.display = "block";alert("CONGRATULATIONS!! YOU JUST PLAYED YOURSELF!!");
+			
 		}
 		else {
 			alert("I DIDN'T WANT TO PLAY ANYWAY");
@@ -56,6 +69,7 @@
 				console.log(randomWord);
 				if(randomArray.join("") == randomWord){
 					alert("YOU'RE SMART!!");
+					document.getElementById("img1").style.display = "block";
 					var newGame = confirm("ANOTHA ONE");
 					if(newGame == true){
 						secrWord();
