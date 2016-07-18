@@ -1,106 +1,115 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title></title>
-</head>
-<body>
-	<div id="secWord">
-	<h1 id="word"></h1>
-	<h2 id="live"></h2>
+	<head>
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	</head>
+	<body>
+		<div id="secWord">
+		<h1 id="word"></h1>
+		<h2 id="live"></h2>
 
-	</div>
+		</div>
 
-	<div >
-	<img id= "img1" src="assets/images/img1.jpg">
-		
-	</div>
+		<div><img id= "img1" src="assets/images/img1.jpg"></div>
+		<div><canvas id="myCanvas"></canvas></div>
+		<div><img id="scream"></div>
+		<div><img id="img2" src="assets/images/img2.jpg"></div>
 
-	<div>
-	<img id="img2" src="assets/images/img2.jpg">
-
-	</div>
-
-	<script>
-		document.getElementById("img1").style.display = "none";
-		document.getElementById("img2").style.display = "none";
-		var startGame = prompt("Are you ready to play Hangman? ");
-		if(startGame === "yes"){
-			alert("GET READY GAME IS ABOUT TO START");
-			secrWord();
-		}else if(startGame === "no"){
-			
-			document.getElementById("img2").style.display = "block";alert("CONGRATULATIONS!! YOU JUST PLAYED YOURSELF!!");
-			
-		}
-		else {
-			alert("I DIDN'T WANT TO PLAY ANYWAY");
-		}
-			// *** function that 
-		function secrWord(){
+		<script>
 			document.getElementById("img1").style.display = "none";
 			document.getElementById("img2").style.display = "none";
-			var words = ["soccer", "basketball", "tennis", "golf", "football"];
-			var randomNumber = Math.floor(Math.random() * words.length);
-			randomWord = (words[randomNumber]);
-			randomArray = randomWord.split ("");
-			for (var i = 0; i < randomArray.length; i++) {
-				randomArray[i] = " _ ";
+			var startGame = prompt("Are you ready to play Hangman? ");
+			if(startGame === "yes"){
+				alert("GET READY GAME IS ABOUT TO START!!!!")    
+				alert("HINT: TYPE OF SPORT!");
+				secrWord();
+			}else if(startGame === "no"){
+				
+				document.getElementById("img2").style.display = "block";alert("CONGRATULATIONS!! YOU JUST PLAYED YOURSELF!!");
+				var newGame = confirm("ANOTHA ONE?");
+						if(newGame == true){
+							document.getElementById("img2").style.display = "none";
+							alert("HINT: TYPE OF SPORT!");
+							secrWord();}
 			}
-			console.log(randomArray);
-			console.log(randomWord);
-			lives = 6;
-			document.getElementById("live").innerHTML = "YOU HAVE " + lives + " LIVES";
-			document.getElementById("word").innerHTML = randomArray.join("");
-		}
-			
-			document.addEventListener("keypress", keyTest);
-
-		function keyTest(event){
-			var index = randomWord.indexOf(event.key);
-			if (randomWord.includes(event.key) === true) {
+			else {
+				alert("I DIDN'T WANT TO PLAY ANYWAY");
+				var newGame = confirm("ANOTHA ONE?");
+						if(newGame == true){
+							alert("HINT: TYPE OF SPORT!");
+							secrWord();}
+			}
+				// *** function that 
+			function secrWord(){
+				document.getElementById("img1").style.display = "none";
+				document.getElementById("img2").style.display = "none";
+				var words = ["soccer", "basketball", "tennis", "golf", "football", "baseball", "gymnastic", "archery"];
+				var randomNumber = Math.floor(Math.random() * words.length);
+				randomWord = (words[randomNumber]);
+				randomArray = randomWord.split ("");
 				for (var i = 0; i < randomArray.length; i++) {
-					if (randomWord[i] == event.key){
-						randomArray[i] = event.key;
-
-					}
+					randomArray[i] = " _ ";
 				}
-				
-				document.getElementById("word").innerHTML = randomArray.join("");
-				
-				console.log(randomArray.join(""));
+				console.log(randomArray);
 				console.log(randomWord);
-				if(randomArray.join("") == randomWord){
-					alert("YOU'RE SMART!!");
-					document.getElementById("img1").style.display = "block";
-					var newGame = confirm("ANOTHA ONE");
-					if(newGame == true){
-						secrWord();
+				lives = 6;
+				document.getElementById("live").innerHTML = "YOU HAVE " + lives + " LIVES!!";
+				document.getElementById("word").innerHTML = randomArray.join("");
+			}
+				
+				document.addEventListener("keypress", keyTest);
+
+			function keyTest(event){
+				var index = randomWord.indexOf(event.key);
+				if (randomWord.includes(event.key) === true) {
+					for (var i = 0; i < randomArray.length; i++) {
+						if (randomWord[i] == event.key){
+							randomArray[i] = event.key;
+
+						}
+					}
+					
+					document.getElementById("word").innerHTML = randomArray.join("");
+					
+					console.log(randomArray.join(""));
+					console.log(randomWord);
+					if(randomArray.join("") == randomWord){
+						alert("YOU'RE SMART!!");
+						document.getElementById("img1").style.display = "block";
+						var newGame = confirm("ANOTHA ONE?");
+						if(newGame == true){
+							document.getElementById("img1").style.display = "none";
+							alert("HINT: TYPE OF SPORT!");
+							secrWord();
+						}
 					}
 				}
-			}
-			else{
-				lives--;
-				document.getElementById("live").innerHTML = "YOU HAVE " + lives + " LIVES";
-				if (lives < 1) {
-					alert("CONGRATULATIONS, YOU JUST PLAYED YOURSELF!");
-					document.getElementById("img2").style.display = "block";
-					var newGame = confirm("ANOTHA ONE");
-					if(newGame == true){
-						secrWord();
+				else{
+					lives--;
+					document.getElementById("live").innerHTML = "YOU HAVE " + lives + " LIVES";
+					if (lives < 1) {
+						alert("CONGRATULATIONS, YOU JUST PLAYED YOURSELF!");
+						document.getElementById("img2").style.display = "block";
+						var newGame = confirm("ANOTHA ONE?");
+						if(newGame == true){
+							document.getElementById("img2").style.display = "none";
+							alert("HINT: TYPE OF SPORT!");
+							secrWord();
+						}
 					}
 				}
-			}
 
-		};
-			
+			};
+				
 
-			
-		
 				
 			
+					
 				
+					
 
 		</script>
 
-</body>
+	</body>
 </html>

@@ -1,0 +1,34 @@
+body {
+	background-color:lightblue;
+	align-content:center;
+	position:center;
+}
+#secWord {
+
+}
+#word {
+	position:center;
+	/*text-align:center;*/
+	margin-left:520px;
+
+}
+h2 {
+	position:center;
+	margin-left:500px;
+	color:blue;
+	width:17%;
+	/*margin-right:100px;*/
+	background-color:lightgreen;
+	/*text-align:left;*/
+
+}
+#img1 {
+	align-content:center;
+	position:center;
+	margin-left:70px;
+}
+#img2 {
+	align-items:center;
+	position:center;
+	margin-left:70px
+}
